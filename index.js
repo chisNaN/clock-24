@@ -2,11 +2,12 @@ function placeCircles() {
 
   let htmlOutput = '';
   const w = window.innerWidth;
-  //const h = window.innerHeight;
+  const height = window.innerHeight;
   let left = Math.round(w / 2);
   let top = 0;
   const d = new Date();
-  const h = d.getHours();
+  let h = d.getHours();
+  if(h === 0) h = 24;
   const minutesOpacity = Math.round10(d.getMinutes() / 60, -1) + 0.1;
   const percent = Math.round((d.getMinutes() / 60) * 100);
 
@@ -54,5 +55,5 @@ function placeCircles() {
     }
   }
   //console.log(htmlOutput);
-  document.body.innerHTML = htmlOutput;
+  document.querySelector('#main').innerHTML = htmlOutput;
 }

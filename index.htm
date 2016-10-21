@@ -10,20 +10,26 @@
     <script type="text/javascript">
       setInterval(() => {
         const d = new Date();
-        const h = d.getHours();
+        let h = d.getHours();
+        if(h === 0) h = 24;
         const percent = Math.round((d.getMinutes() / 60) * 100);
         const minutesOpacity = Math.round10(d.getMinutes() / 60, -1);
         document.querySelector('#_'+h).innerHTML = '<h3>'+percent+' %</h3>';
         document.querySelector('#_'+h).style.opacity = minutesOpacity;
         //in case of a new hour is going
+        console.log(h);
         if(h === 1){
-          document.querySelector('#_24').innerHTML = '<h3>24</h3>';
-          document.querySelector('#_24').style.backgroundColor = 'cornflowerblue';
+          // we should loop only once
+            for(let i = 1; ++i<25;) {
+              document.querySelector('#_'+i).innerHTML = '<h3>'+i+'</h3>';
+              document.querySelector('#_'+i).style.backgroundColor = 'none';
+            }
         }else {
           document.querySelector('#_'+(h-1)).innerHTML = '<h3>'+(h-1)+'</h3>';
           document.querySelector('#_'+(h-1)).style.backgroundColor = 'cornflowerblue';
         }
     }, 30000);
+
     </script>
     <style media="screen">
 
@@ -36,6 +42,19 @@
     </style>
   </head>
   <body onload="placeCircles();" onresize="placeCircles();">
-<!-- <div class="circle" style="top: 150px; left: 150px;"><b>'+i+'</b></div> -->
+  <div id="date" style="position: absolute;"><h1>
+    <script type="text/javascript">
+    const d = new Date();
+      document.writeln(d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear());
+    </script>
+  </h1>
+  </div>
+    <div id="main">
+    </div>
   </body>
+  <script type="text/javascript">
+  document.querySelector('#date').top = Math.round(window.innerHeight / 2)+'px';
+  console.log(document.querySelector('#date').top);
+  document.querySelector('#date').left = Math.round(window.innerWidth / 2)+'px';
+  </script>
 </html>
