@@ -1,3 +1,3 @@
 #24h clock display
 
->@todo: combine with an every minute timer update
+>@todo: when 1 am if all others circles are blue set them to bg white
