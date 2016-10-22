@@ -8,7 +8,8 @@ function placeCircles() {
   const d = new Date();
   let h = d.getHours();
   if(h === 0) h = 24;
-  const minutesOpacity = Math.round10(d.getMinutes() / 60, -1) + 0.1;
+  let minutesOpacity = Math.round10(d.getMinutes() / 60, -1);
+  if(minutesOpacity === 0) minutesOpacity = 0.1;
   const percent = Math.round((d.getMinutes() / 60) * 100);
 
   for(let i = 0; ++i<25;) {
@@ -19,18 +20,18 @@ function placeCircles() {
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="opacity: '+minutesOpacity+'; background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
-          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+'</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }else if(i > h){
-          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+'</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }
       }else {
         left -= 50;
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="opacity: '+minutesOpacity+'; background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
-          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+'</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }else if(i > h){
-          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+'</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }          }
     }else {
       top -= 50;
@@ -39,21 +40,23 @@ function placeCircles() {
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="opacity: '+minutesOpacity+'; background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
-          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+'</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }else if(i > h){
-          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+'</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }
       }else {
         left += 50;
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="opacity: '+minutesOpacity+'; background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
-          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+'</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }else if(i > h){
-          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+'</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }          }
     }
   }
   //console.log(htmlOutput);
+  htmlOutput += '<div id="date" style="position: absolute; top: 300px; left: '+(w / 2)+'px;"><h1>'+d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear()+'</h1></div>';
   document.querySelector('#main').innerHTML = htmlOutput;
+
 }
