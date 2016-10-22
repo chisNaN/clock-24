@@ -31,8 +31,11 @@
             }
           }
         }else {
-          document.querySelector('#_'+(h-1)).innerHTML = '<h3>'+(h-1)+' h</h3>';
-          document.querySelector('#_'+(h-1)).style.backgroundColor = 'cornflowerblue';
+          //updating dom only when reaching end of current hour
+          if(d.getMinutes() > 57) {
+            document.querySelector('#_'+(h-1)).innerHTML = '<h3>'+(h-1)+' h</h3>';
+            document.querySelector('#_'+(h-1)).style.backgroundColor = 'cornflowerblue';
+          }
         }
     }, 30000);
 
