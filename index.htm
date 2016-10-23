@@ -12,6 +12,7 @@
         const d = new Date();
         let h = d.getHours();
         if(h === 0) h = 24;
+        const previousHour = h - 1;
 
         const percent = Math.round((d.getMinutes() / 60) * 100);
         let minutesOpacity = Math.round10(d.getMinutes() / 60, -1);
@@ -23,18 +24,28 @@
         if(h === 1){
           // we should loop only once (this is in case passing from midnight to 1 am)
           if(document.querySelector('#_2').style.backgroundColor === 'cornflowerblue') {
-            document.querySelector('#date').innerHTML = '<h1>'+d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear()+'</h1>';
             document.querySelector('#_24').innerHTML = '<h3>24 h</h3>';
 
             for(let i = 1; ++i<25;) {
               document.querySelector('#_'+i).style.backgroundColor = '';
             }
           }
+        }else if(h === 24) { // we must update new date when reaching midnight
+          const fullDate = d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear();
+
+          if(document.querySelector('#date').innerHTML !== '<h1>'+fullDate+'</h1>') {
+            document.querySelector('#date').innerHTML = '<h1>'+fullDate+'</h1>';
+          }
+
+          if(document.querySelector('#_'+previousHour).style.backgroundColor !== 'cornflowerblue') {
+            document.querySelector('#_'+previousHour).innerHTML = '<h3>'+previousHour+' h</h3>';
+            document.querySelector('#_'+previousHour).style.backgroundColor = 'cornflowerblue';
+          }
         }else {
           //updating dom only when reaching end of current hour
-          if(d.getMinutes() > 57) {
-            document.querySelector('#_'+(h-1)).innerHTML = '<h3>'+(h-1)+' h</h3>';
-            document.querySelector('#_'+(h-1)).style.backgroundColor = 'cornflowerblue';
+          if(document.querySelector('#_'+previousHour).style.backgroundColor !== 'cornflowerblue') {
+            document.querySelector('#_'+previousHour).innerHTML = '<h3>'+previousHour+' h</h3>';
+            document.querySelector('#_'+previousHour).style.backgroundColor = 'cornflowerblue';
           }
         }
     }, 30000);
