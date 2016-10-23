@@ -19,7 +19,10 @@
         if(minutesOpacity === 0) minutesOpacity = 0.1;
 
         document.querySelector('#_'+h).innerHTML = '<h3>'+percent+' %</h3>';
-        document.querySelector('#_'+h).style.opacity = minutesOpacity;
+        //document.querySelector('#_'+h).style.opacity = minutesOpacity;
+        if(document.querySelector('#_'+h).style.backgroundColor !== 'red') {
+          document.querySelector('#_'+h).style.backgroundColor = 'red';
+        }
         //in case of a new hour is going
         if(h === 1){
           // we should loop only once (this is in case passing from midnight to 1 am)

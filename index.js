@@ -18,7 +18,7 @@ function placeCircles() {
       if(i > 0 && i < 7) {
         left += 50;
         if(i === h) {
-          htmlOutput += '<div class="circle" id="_'+i+'" style="opacity: '+minutesOpacity+'; background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }else if(i > h){
@@ -27,7 +27,7 @@ function placeCircles() {
       }else {
         left -= 50;
         if(i === h) {
-          htmlOutput += '<div class="circle" id="_'+i+'" style="opacity: '+minutesOpacity+'; background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }else if(i > h){
@@ -38,7 +38,7 @@ function placeCircles() {
       if(i > 12 && i < 19) {
         left -= 50;
         if(i === h) {
-          htmlOutput += '<div class="circle" id="_'+i+'" style="opacity: '+minutesOpacity+'; background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }else if(i > h){
@@ -47,7 +47,7 @@ function placeCircles() {
       }else {
         left += 50;
         if(i === h) {
-          htmlOutput += '<div class="circle" id="_'+i+'" style="opacity: '+minutesOpacity+'; background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
+          htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: cornflowerblue; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }else if(i > h){
