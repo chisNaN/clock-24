@@ -7,6 +7,9 @@
     </script>
     <script type="text/javascript" src="index.js">
     </script>
+    <script type="text/javascript" src="webAudio.js">
+
+    </script>
     <script type="text/javascript">
       setInterval(() => {
         const d = new Date();
@@ -17,6 +20,12 @@
         const percent = Math.round((d.getMinutes() / 60) * 100);
         let minutesOpacity = Math.round10(d.getMinutes() / 60, -1);
         if(minutesOpacity === 0) minutesOpacity = 0.1;
+
+        //warn with a sound a forthcoming new hour
+        if(d.getMinutes() === 59 && d.getSeconds() > 29) {
+          console.log(d.getSeconds());
+          webAudio(493.883, 5, 'sine');
+        }
 
         document.querySelector('#_'+h).innerHTML = '<h3>'+percent+' %</h3>';
         //document.querySelector('#_'+h).style.opacity = minutesOpacity;
