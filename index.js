@@ -1,9 +1,10 @@
 function placeCircles() {
 
+  const circleWidth = 50;
   let htmlOutput = '';
   const w = window.innerWidth;
   const height = window.innerHeight;
-  let left = Math.round(w / 2);
+  let left = Math.round(w / 2) - circleWidth / 2;
   let top = 0;
   const d = new Date();
   let h = d.getHours();
@@ -14,9 +15,9 @@ function placeCircles() {
 
   for(let i = 0; ++i<25;) {
     if(i > 0 && i < 13) {
-      top += 50;
+      top += circleWidth;
       if(i > 0 && i < 7) {
-        left += 50;
+        left += circleWidth;
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
@@ -25,7 +26,7 @@ function placeCircles() {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }
       }else {
-        left -= 50;
+        left -= circleWidth;
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
@@ -34,9 +35,9 @@ function placeCircles() {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }          }
     }else {
-      top -= 50;
+      top -= circleWidth;
       if(i > 12 && i < 19) {
-        left -= 50;
+        left -= circleWidth;
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
@@ -45,7 +46,7 @@ function placeCircles() {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: none; top: '+top+'px; left: '+left+'px;"><h3>'+i+' h</h3></div>';
         }
       }else {
-        left += 50;
+        left += circleWidth;
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';
         }else if(i < h) {
@@ -56,7 +57,7 @@ function placeCircles() {
     }
   }
   //console.log(htmlOutput);
-  htmlOutput += '<div id="date" style="position: absolute; top: 300px; left: '+((w / 2) - 50)+'px;"><h1>'+d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear()+'</h1></div>';
+  htmlOutput += '<div id="date" style="position: absolute; top: 300px; left: '+((w / 2) - circleWidth)+'px;"><h1>'+d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear()+'</h1></div>';
   document.querySelector('#main').innerHTML = htmlOutput;
 
 }
