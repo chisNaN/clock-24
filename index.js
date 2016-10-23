@@ -56,7 +56,7 @@ function placeCircles() {
     }
   }
   //console.log(htmlOutput);
-  htmlOutput += '<div id="date" style="position: absolute; top: 300px; left: '+(w / 2)+'px;"><h1>'+d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear()+'</h1></div>';
+  htmlOutput += '<div id="date" style="position: absolute; top: 300px; left: '+((w / 2) - 50)+'px;"><h1>'+d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear()+'</h1></div>';
   document.querySelector('#main').innerHTML = htmlOutput;
 
 }
