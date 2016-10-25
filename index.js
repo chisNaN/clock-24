@@ -7,16 +7,14 @@ function placeCircles() {
   let left = Math.round(w / 2) - circleWidth / 2;
   let top = 0;
   const d = new Date();
-  let h = d.getHours();
-  if(h === 0) h = 24;
-  let minutesOpacity = Math.round10(d.getMinutes() / 60, -1);
-  if(minutesOpacity === 0) minutesOpacity = 0.1;
+  const h = d.getHours();
+  //if(h === 0) h = 24;
   const percent = Math.round((d.getMinutes() / 60) * 100);
 
-  for(let i = 0; ++i<25;) {
-    if(i > 0 && i < 13) {
+  for(let i = -1; ++i<24;) {
+    if(i >= 0 && i < 13) {
       top += circleWidth;
-      if(i > 0 && i < 7) {
+      if(i >= 0 && i < 7) {
         left += circleWidth;
         if(i === h) {
           htmlOutput += '<div class="circle" id="_'+i+'" style="background-color: red; top: '+top+'px; left: '+left+'px;"><h3>'+percent+' %</h3></div>';

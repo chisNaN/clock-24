@@ -13,13 +13,9 @@
     <script type="text/javascript">
       setInterval(() => {
         const d = new Date();
-        let h = d.getHours();
-        if(h === 0) h = 24;
+        const h = d.getHours();
         const previousHour = h - 1;
-
         const percent = Math.round((d.getMinutes() / 60) * 100);
-        let minutesOpacity = Math.round10(d.getMinutes() / 60, -1);
-        if(minutesOpacity === 0) minutesOpacity = 0.1;
 
         //warn with a sound a forthcoming new hour
         if(d.getMinutes() === 59 && d.getSeconds() > 29) {
@@ -28,27 +24,26 @@
         }
 
         document.querySelector('#_'+h).innerHTML = '<h3>'+percent+' %</h3>';
-        //document.querySelector('#_'+h).style.opacity = minutesOpacity;
+
         if(document.querySelector('#_'+h).style.backgroundColor !== 'red') {
           document.querySelector('#_'+h).style.backgroundColor = 'red';
         }
         //in case of a new hour is going
         if(h === 1){
           // from midnight to 1 am
-          if(document.querySelector('#_24').innerHTML !== '<h3>24 h</h3>') {
-            document.querySelector('#_24').innerHTML = '<h3>24 h</h3>';
-            document.querySelector('#_24').style.backgroundColor === 'cornflowerblue'
+          if(document.querySelector('#_0').innerHTML !== '<h3>0 h</h3>') {
+            document.querySelector('#_0').innerHTML = '<h3>0 h</h3>';
+            document.querySelector('#_0').style.backgroundColor === 'cornflowerblue';
           }
-        }else if(h === 24) { // we must update new date when reaching midnight
+        }else if(h === 0) { // we must update new date when reaching midnight
           const fullDate = d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear();
 
           if(document.querySelector('#date').innerHTML !== '<h1>'+fullDate+'</h1>') {
             document.querySelector('#date').innerHTML = '<h1>'+fullDate+'</h1>';
           }
 
-          if(document.querySelector('#_'+previousHour).style.backgroundColor !== 'cornflowerblue') {
-            document.querySelector('#_'+previousHour).innerHTML = '<h3>'+previousHour+' h</h3>';
-            document.querySelector('#_'+previousHour).style.backgroundColor = 'cornflowerblue';
+          if(document.querySelector('#_23').innerHTML !== '<h3>23 h</h3>') {
+            document.querySelector('#_23').innerHTML = '<h3>23 h</h3>';
           }
           //new day begins from midnight (so we reset all other circles)
           for(let i = 0; ++i<24;) {
@@ -70,9 +65,8 @@
     *{ margin: 0; padding: 0; }
 
     html, body{ width: 100%; height: 100%; }
-    body{  }
 
-      .circle{ width: 50px; height: 50px; border-radius: 25px; border: 1px solid #ccc; position: absolute; text-align: center;  }
+    .circle{ width: 50px; height: 50px; border-radius: 25px; border: 1px solid #ccc; position: absolute; text-align: center;  }
     </style>
   </head>
   <body onload="placeCircles();" onresize="placeCircles();">
