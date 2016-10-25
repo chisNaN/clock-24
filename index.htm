@@ -29,19 +29,13 @@
           document.querySelector('#_'+h).style.backgroundColor = 'red';
         }
         //in case of a new hour is going
-        if(h === 1){
-          // from midnight to 1 am
-          if(document.querySelector('#_0').innerHTML !== '<h3>0 h</h3>') {
-            document.querySelector('#_0').innerHTML = '<h3>0 h</h3>';
-            document.querySelector('#_0').style.backgroundColor === 'cornflowerblue';
-          }
-        }else if(h === 0) { // we must update new date when reaching midnight
+        if(h === 0) { // we must update new date when reaching midnight
           const fullDate = d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear();
 
           if(document.querySelector('#date').innerHTML !== '<h1>'+fullDate+'</h1>') {
             document.querySelector('#date').innerHTML = '<h1>'+fullDate+'</h1>';
           }
-
+          // handling previousHour manually (because 0 - 1 = -1 does not exist)
           if(document.querySelector('#_23').innerHTML !== '<h3>23 h</h3>') {
             document.querySelector('#_23').innerHTML = '<h3>23 h</h3>';
           }
