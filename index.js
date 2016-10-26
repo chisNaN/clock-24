@@ -4,7 +4,7 @@ function placeCircles() {
   let htmlOutput = '';
   const w = window.innerWidth;
   const height = window.innerHeight;
-  let left = Math.round(w / 2) - circleWidth / 2;
+  let left = Math.round(w / 2) - circleWidth * 1.5;
   let top = 0;
   const d = new Date();
   const h = d.getHours();
