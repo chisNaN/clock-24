@@ -18,11 +18,11 @@
         const percent = Math.round((d.getMinutes() / 60) * 100);
 
         //warn with a sound a forthcoming new hour
-        if(d.getMinutes() === 59 && d.getSeconds() > 29) {
+        if(d.getMinutes() === 0 && d.getSeconds() > 29) {
           console.log(d.getSeconds());
           webAudio(493.883, 5, 'sine');
         }
-
+        
         document.querySelector('#_'+h).innerHTML = '<h3>'+percent+' %</h3>';
 
         if(document.querySelector('#_'+h).style.backgroundColor !== 'red') {
