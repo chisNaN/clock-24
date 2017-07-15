@@ -30,7 +30,7 @@
         }
         //in case of a new hour is going
         if(h === 0) { // we must update new date when reaching midnight
-          const fullDate = d.getDate()+'/'+(d.getMonth() + 1)+'/'+d.getFullYear();
+          const fullDate = new Date().toJSON().substr(0, 10);
 
           if(document.querySelector('#date').innerHTML !== '<h1>'+fullDate+'</h1>') {
             document.querySelector('#date').innerHTML = '<h1>'+fullDate+'</h1>';
